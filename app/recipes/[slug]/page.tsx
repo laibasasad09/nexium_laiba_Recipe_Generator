@@ -34,13 +34,13 @@
 import { notFound } from "next/navigation";
 import { recipes } from "@/app/data/recipes";
 
-interface RecipeDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function RecipeDetailPage({ params }: RecipeDetailPageProps) {
+// No need to import PageProps or create interfaces
+// Just destructure `params` directly
+export default function RecipeDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const recipe = recipes.find((r) => r.slug === params.slug);
 
   if (!recipe) return notFound();
